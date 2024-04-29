@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "ttldict"
+version = "0.1.0"
+description = "Python dictionary with TTL support"
+authors = ["Dongruixuan Li <dongruixuan@hotmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
