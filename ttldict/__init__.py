@@ -1,7 +1,7 @@
 __all__ = ['TTLDict']
 
 from collections import deque
-from typing import TypeVar, Generic, Optional
+from typing import TypeVar, Generic, Optional, Callable
 from threading import RLock
 import time
 K = TypeVar('K')
@@ -9,7 +9,7 @@ V = TypeVar('V')
 class TTLDict(Generic[K, V]):
     ttl: float
     d: dict[K, tuple[float, V]]
-    expiring_queue: deque[tuple[float, K, Optional[function]]]
+    expiring_queue: deque[tuple[float, K, Optional[Callable]]]
     lock: RLock
     def __init__(self, ttl: float, *args, **kwargs):
         self.ttl = ttl
@@ -85,7 +85,7 @@ class TTLDict(Generic[K, V]):
                 return self.d[key][1]
             self.__setitem__(key, default)
             return default
-    def set(self, key, value, expire_callback: Optional[function] = None):
+    def set(self, key, value, expire_callback: Optional[Callable] = None):
         with self.lock:
             self.purge()
             exp = time.time() + self.ttl
