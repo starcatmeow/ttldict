@@ -2,7 +2,7 @@
 name = "ttldict"
 version = "0.1.0"
 description = "Python dictionary with TTL support"
-authors = ["Dongruixuan Li <dongruixuan@hotmail.com>"]
+authors = ["Dongruixuan Li <dongruixuan@hotmail.com>", "liangjs <liangjs@pku.edu.cn>"]
 license = "MIT"
 readme = "README.md"
 
